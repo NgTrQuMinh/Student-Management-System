@@ -21,7 +21,6 @@
         "create-admin": "node scripts/create-admin.js"
     },
     "dependencies": {
-        "api-query-params": "^6.1.0",
         "bcryptjs": "^2.4.3",
         "compression": "^1.8.2",
         "cors": "^2.8.6",
