@@ -1,0 +1,41 @@
+{
+    "name": "student-management-system",
+    "version": "1.0.0",
+    "description": "RESTful API quản lý sinh viên với Express và MongoDB",
+    "license": "ISC",
+    "author": "NgTrQuMinh",
+    "type": "commonjs",
+    "main": "src/server.js",
+    "engines": {
+        "node": ">=18"
+    },
+    "scripts": {
+        "start": "node src/server.js",
+        "dev": "nodemon src/server.js"
+    },
+    "dependencies": {
+        "api-query-params": "^6.1.0",
+        "bcryptjs": "^2.4.3",
+        "compression": "^1.8.2",
+        "cors": "^2.8.6",
+        "dotenv": "^18.0.8",
+        "express": "^5.3.0",
+        "express-rate-limit": "^8.7.1",
+        "helmet": "^8.3.0",
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^9.11.2",
+        "mongoose-delete": "^1.0.7",
+        "morgan": "^1.12.1",
+        "zod": "^3.23.8"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.14.0",
+        "eslint": "^9.14.0",
+        "globals": "^15.11.0",
+        "jest": "^29.7.0",
+        "mongodb-memory-server": "^10.0.0",
+        "nodemon": "^3.1.7",
+        "prettier": "^3.3.3",
+        "supertest": "^7.0.0"
+    }
+}
