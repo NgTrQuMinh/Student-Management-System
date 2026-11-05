@@ -15,7 +15,9 @@
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "format": "prettier --write .",
-        "format:check": "prettier --check ."
+        "format:check": "prettier --check .",
+        "test": "jest --runInBand",
+        "test:watch": "jest --watch"
     },
     "dependencies": {
         "api-query-params": "^6.1.0",
