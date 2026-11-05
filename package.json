@@ -17,7 +17,8 @@
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "test": "jest --runInBand",
-        "test:watch": "jest --watch"
+        "test:watch": "jest --watch",
+        "create-admin": "node scripts/create-admin.js"
     },
     "dependencies": {
         "api-query-params": "^6.1.0",
