@@ -4,6 +4,7 @@ const courseFields = {
     courseCode: z
         .string()
         .trim()
+        .toUpperCase()
         .min(1, 'Mã môn học là bắt buộc')
         .max(20, 'Mã môn học không vượt quá 20 ký tự'),
     name: z

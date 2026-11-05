@@ -4,6 +4,7 @@ const classFields = {
     classCode: z
         .string()
         .trim()
+        .toUpperCase()
         .min(1, 'Mã lớp là bắt buộc')
         .max(20, 'Mã lớp không vượt quá 20 ký tự'),
     name: z
