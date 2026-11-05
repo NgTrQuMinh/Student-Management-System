@@ -8,6 +8,7 @@ process.env.MONGODB_URI =
 
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
+const { setupAdmin } = require('./helpers');
 
 let mongoServer;
 
@@ -18,6 +19,11 @@ beforeAll(async () => {
         // Workaround cho lỗi handshake của MongoDB driver 7.6+ khi chạy trong Jest.
         runtimeAdapters: { os: require('os') },
     });
+});
+
+beforeEach(async () => {
+    // Mỗi test có sẵn một tài khoản admin để gọi các API được bảo vệ.
+    await setupAdmin();
 });
 
 afterEach(async () => {

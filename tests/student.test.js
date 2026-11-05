@@ -1,7 +1,4 @@
-const request = require('supertest');
-const app = require('../src/app');
-
-const api = request(app);
+const { api } = require('./helpers');
 
 const createClass = async (payload = {}) => {
     const res = await api.post('/api/v1/classes').send({

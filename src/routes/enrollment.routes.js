@@ -1,5 +1,6 @@
 const express = require('express');
 const validate = require('../middlewares/validate');
+const { authorize } = require('../middlewares/auth');
 const { idParamSchema } = require('../validators/common.schema');
 const {
     createEnrollmentSchema,
@@ -12,16 +13,17 @@ const router = express.Router();
 router
     .route('/')
     .get(enrollmentController.list)
-    .post(validate(createEnrollmentSchema), enrollmentController.create);
+    .post(authorize('admin'), validate(createEnrollmentSchema), enrollmentController.create);
 
 router
     .route('/:id')
     .get(validate(idParamSchema, 'params'), enrollmentController.getById)
     .patch(
+        authorize('admin'),
         validate(idParamSchema, 'params'),
         validate(updateEnrollmentSchema),
         enrollmentController.update
     )
-    .delete(validate(idParamSchema, 'params'), enrollmentController.remove);
+    .delete(authorize('admin'), validate(idParamSchema, 'params'), enrollmentController.remove);
 
 module.exports = router;
