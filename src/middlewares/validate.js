@@ -13,17 +13,19 @@ const formatIssues = (issues) =>
 const validate =
     (schema, source = 'body') =>
     (req, res, next) => {
-        const { error, value } = schema.safeParse(req[source]);
+        const result = schema.safeParse(req[source]);
 
-        if (error) {
-            return next(ApiError.badRequest('Dữ liệu không hợp lệ', formatIssues(error.issues)));
+        if (!result.success) {
+            return next(
+                ApiError.badRequest('Dữ liệu không hợp lệ', formatIssues(result.error.issues))
+            );
         }
 
         // Express 5 định nghĩa req.query bằng getter nên không thể gán trực tiếp.
         if (source === 'query') {
-            req.validatedQuery = value;
+            req.validatedQuery = result.data;
         } else {
-            req[source] = value;
+            req[source] = result.data;
         }
 
         return next();
