@@ -46,6 +46,20 @@ const list = async ({ filter, sort, skip, limit }) => {
     return { items, total };
 };
 
+const listByStudent = async (studentId, options) => {
+    const student = await Student.findById(studentId);
+    if (!student) throw ApiError.notFound('Không tìm thấy sinh viên');
+
+    return list({ ...options, filter: { ...options.filter, studentId } });
+};
+
+const listByCourse = async (courseId, options) => {
+    const course = await Course.findById(courseId);
+    if (!course) throw ApiError.notFound('Không tìm thấy môn học');
+
+    return list({ ...options, filter: { ...options.filter, courseId } });
+};
+
 const getById = async (id) => {
     const enrollment = await Enrollment.findById(id).populate(populateFields);
     if (!enrollment) throw ApiError.notFound('Không tìm thấy đăng ký môn học');
@@ -77,4 +91,12 @@ const deleteById = async (id) => {
     return enrollment;
 };
 
-module.exports = { create, list, getById, updateById, deleteById };
+module.exports = {
+    create,
+    list,
+    listByStudent,
+    listByCourse,
+    getById,
+    updateById,
+    deleteById,
+};
